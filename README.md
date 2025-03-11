@@ -1,7 +1,7 @@
-# Backend Starter Template
+# BMADS-Shop-Server
 
 ## Description
-This repository serves as a starter template for backend projects using Node.js, TypeScript, Express, and MongoDB. It includes basic configurations for linting, formatting, and development tools to streamline your development process.
+
 
 ## Features
 -**TypeScript** for strong typing and enhanced developer experience.
@@ -41,6 +41,17 @@ Make sure you have the following installed:
    ```env
    PORT=3000
    DATABASE_URL= your-mongodb-uri
+   NODE_ENV=development
+   BCRYPT_SALT_ROUND= Any Number
+   JWT_ACCESS_SECRET=
+   JWT_REFRESH_SECRET=
+   JWT_ACCESS_EXPIRES_IN=10d
+   JWT_REFRESH_EXPIRES_IN=365d
+   CLOUDINARY_CLOUD_NAME=dkwn9bool
+   CLOUDINARY_API_KEY=321321414891178
+   CLOUDINARY_API_SECRET=Gp6xg9-eOc0ylgOInGZ0CLnAfyY
+   FROM_EMAIL=NODEMAILER_EMAIL_SENDING
+   FROM_PASS=PASSWORD
    ```
 
 ## Scripts
@@ -82,31 +93,119 @@ Make sure you have the following installed:
 
 ## Folder Structure
 ```
-├── src
-│   ├── app     
-│   ├    ├── config    
-│   └── server.ts      
-│   └── app.ts          
-├── dist                # Compiled JavaScript files
-├── .eslintrc.json      # ESLint configuration
-├── .prettierrc         # Prettier configuration
-├── tsconfig.json       # TypeScript configuration
-└── package.json        # Project metadata and scripts
+├── src/
+│   ├── app/
+│   │   ├── builder/
+│   │   │   └── QueryBuilder.ts
+│   │   ├── config/
+│   │   │   └── index.ts
+│   │   ├── errors/
+│   │   │   ├── AppError.ts
+│   │   │   ├── handleZodError.ts
+│   │   │   └── handleCastError.ts
+│   │   ├── interface/
+│   │   │   ├── events.ts
+│   │   │   └── index.d.ts
+│   │   ├── middlewares/
+│   │   │   ├── auth.ts
+│   │   │   └── globalErrorHandler.ts
+│   │   ├── route/
+│   │   │   └── index.ts
+│   │   ├── utils/
+│   │   │   ├── CatchAsync.ts
+│   │   │   └── sendResponse.ts
+│   ├── module/
+│   │   ├── Auth/
+│   │   │   ├── controller.ts
+│   │   │   ├── interface.ts
+│   │   │   ├── model.ts
+│   │   │   ├── route.ts
+│   │   │   ├── validation.ts
+│   │   │   └── service.ts
+│   │   ├── Customer/
+│   │   │   ├── controller.ts
+│   │   │   ├── interface.ts
+│   │   │   ├── model.ts
+│   │   │   ├── route.ts
+│   │   │   ├── validation.ts
+│   │   │   └── service.ts
+│   │   ├── Product/
+│   │   │   ├── controller.ts
+│   │   │   ├── interface.ts
+│   │   │   ├── model.ts
+│   │   │   ├── route.ts
+│   │   │   ├── validation.ts
+│   │   │   └── service.ts
+│   │   ├── Category/
+│   │   │   ├── controller.ts
+│   │   │   ├── interface.ts
+│   │   │   ├── model.ts
+│   │   │   ├── route.ts
+│   │   │   ├── validation.ts
+│   │   │   └── service.ts
+│   │   ├── Order/
+│   │   │   ├── controller.ts
+│   │   │   ├── interface.ts
+│   │   │   ├── model.ts
+│   │   │   ├── route.ts
+│   │   │   ├── validation.ts
+│   │   │   └── service.ts
+│   │   ├── Review/
+│   │   │   ├── controller.ts
+│   │   │   ├── interface.ts
+│   │   │   ├── model.ts
+│   │   │   ├── route.ts
+│   │   │   ├── validation.ts
+│   │   │   └── service.ts
+│   │   ├── User/
+│   │   │   ├── controller.ts
+│   │   │   ├── interface.ts
+│   │   │   ├── model.ts
+│   │   │   ├── route.ts
+│   │   │   ├── validation.ts
+│   │   │   └── service.ts
+│   ├── app.ts
+│   ├── server.ts
+│   ├── Uploads
+├── dist/                   # Compiled JavaScript files
+├── .env                    # Environment variables
+├── .eslintrc.config.mjs            # ESLint configuration
+├── .prettierrc             # Prettier configuration
+├── package.json            # Project dependencies and scripts
+├── tsconfig.json           # TypeScript configuration
+└── README.md               # Project documentation
+```
 
 ## Dependencies
 
 ### Production:
+
+- `bcrypt`: Library for hashing passwords
+- `cookie-parser`: Parse cookies for incoming requests
 - `cors`: Enable Cross-Origin Resource Sharing
 - `dotenv`: Load environment variables from `.env` file
-- `express`: Web framework for Node.js
-- `mongoose`: MongoDB object modeling tool
-- `zod`: TypeScript-first schema validation
+- `express`: Web framework for building REST APIs
+- `http-status`: Manage and use HTTP status codes
+- `jsonwebtoken`: Generate and verify JSON Web Tokens (JWT)
+- `lint-staged`: Run linters on staged Git files
+- `mongoose`: MongoDB object modeling library
+- `nodemailer`: Send emails from Node.js
+- `zod`: Schema validation library for data
+
+```bash
+npm install bcrypt cookie-parser cors dotenv express http-status jsonwebtoken lint-staged mongoose nodemailer  zod
+```
 
 ### Development:
+
 - `typescript`: TypeScript compiler
 - `eslint`: Linting tool for JavaScript/TypeScript
 - `prettier`: Code formatter
 - `ts-node-dev`: Development server for TypeScript
+
+```bash
+  npm install --save-dev @eslint/js @types/bcrypt @types/cookie-parser @types/cors @types/eslint__js @types/express @types/form-data @types/jsonwebtoken @types/node @types/nodemailer eslint globals prettier ts-node-dev typescript typescript-eslint
+```
 
 ## Contributing
 Contributions are welcome! Please follow these steps:
