@@ -17,6 +17,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.8.3",
     "cloudinary": "^1.41.3",
     "cors": "^2.8.5",
     "cryptopay-node": "^2.2.0",
@@ -24,6 +25,7 @@
     "express": "^4.21.2",
     "http-status": "^2.1.0",
     "http-status-codes": "^2.3.0",
+    "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.1",
     "multer": "^1.4.5-lts.1",

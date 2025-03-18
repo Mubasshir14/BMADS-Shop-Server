@@ -13,9 +13,10 @@ export interface IOrder extends Document {
   discount: number;
   finalAmount: number;
   email: string;
+  orderId: string;
   createdAt?: Date;
   updatedAt?: Date;
-  status?: 'Pending' | 'Processing' | 'Completed' | 'Cancelled';
+  status?: 'Pending' | 'Processing' | 'Completed' | 'Cancelled' | 'Failed';
   paymentMethod?: 'Cash' | 'Card' | 'Online';
   paymentStatus: 'Pending' | 'Paid' | 'Failed';
   // payment?: IPayment | null;

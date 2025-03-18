@@ -2,9 +2,11 @@
 import { Types } from 'mongoose';
 
 export interface IPayment {
-  email: string;
+  user: Types.ObjectId;
   order: Types.ObjectId;
-  status?: 'Pending' | 'Paid' | 'Failed';
+  shop: Types.ObjectId;
+  method: 'COD' | 'Online';
+  status: 'Pending' | 'Paid' | 'Failed';
   transactionId?: string;
   amount: number;
   gatewayResponse?: Record<string, any>;

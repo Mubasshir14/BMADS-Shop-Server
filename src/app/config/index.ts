@@ -24,4 +24,8 @@ export default {
   payment_api: process.env.PAYMENT_API,
   success_url: process.env.SUCCESS_URL,
   failed_url: process.env.FAILED_URL,
+  zerocrypto_token: process.env.ZEROCRYPTOPAY_TOKEN,
+  secret_key: process.env.ZEROCRYPTOPAY_SECRET_KEY,
+  login: process.env.ZEROCRYPTOPAY_LOGIN,
+  api_key: process.env.ZEROCRYPTOPAY_API_URL,
 };

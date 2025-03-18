@@ -1,22 +1,27 @@
+
+
 import { Schema, model } from 'mongoose';
 import { IPayment } from './payment.interface';
 
 const paymentSchema = new Schema<IPayment>(
   {
-    email: {
-      type: String,
-      required: true,
-    },
+
     order: {
       type: Schema.Types.ObjectId,
       ref: 'Order',
       required: true,
     },
 
+    method: {
+      type: String,
+      enum: ['COD', 'Online'],
+      required: true,
+      default: 'Online',
+    },
     status: {
       type: String,
       enum: ['Pending', 'Paid', 'Failed'],
-
+      required: true,
       default: 'Pending',
     },
     transactionId: {
@@ -35,7 +40,9 @@ const paymentSchema = new Schema<IPayment>(
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 export const Payment = model<IPayment>('Payment', paymentSchema);
+
+
