@@ -5,10 +5,14 @@ const app: Application = express();
 
 // parsers
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ['https://bmads-client.vercel.app', 'http://localhost:3000'],
+  }),
+);
 
 // application route
-app.use('/api/v1', router)
+app.use('/api/v1', router);
 
 const getAController = (req: Request, res: Response) => {
   res.status(200).json({

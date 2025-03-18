@@ -8,13 +8,8 @@ export const generateTransactionId = (): string => {
   return `${timestamp}${randomString}`;
 };
 
-// const ZEROCRYPTOPAY_API_URL = 'https://zerocryptopay.com';
-// const ZEROCRYPTOPAY_LOGIN = 'nalyssa6655@gmail.com';
-// const ZEROCRYPTOPAY_TOKEN = 'nsgXVlOH6gAA16jDl8E8vb99zRk968W9y7w';
-// const ZEROCRYPTOPAY_SECRET_KEY = 'ti6G7R1HhGDgsuKc1Hi7SR7eBQau69PfA67';
 
 export const generateSignature = (amount: any, orderId: any, login: any) => {
-  // const signString = `${amount}${ZEROCRYPTOPAY_SECRET_KEY}${orderId}${login}`;
   const signString = `${amount}${config.secret_key}${orderId}${login}`;
   return crypto.createHash('sha256').update(signString).digest('hex');
 };
@@ -29,10 +24,8 @@ export const initZeroCryptoPayPayment = async (order: any) => {
   );
 
   const payload = {
-    // login: ZEROCRYPTOPAY_LOGIN,
     login: config.login,
     amount: finalAmount,
-    // token: ZEROCRYPTOPAY_TOKEN,
     token: config.zerocrypto_token,
     order_id: orderId,
     signature: signature,
